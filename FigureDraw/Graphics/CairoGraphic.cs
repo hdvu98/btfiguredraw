@@ -71,5 +71,28 @@ namespace FigureDraw.Graphics
             lib.Restore();
         }
 
+        public override void drawFillEllipse(int cx, int cy, int hradius, int vradius)
+        {
+            lib.Save();
+            Matrix matrix = lib.Matrix;
+            lib.Translate((double)cx + (double)hradius / 2, (double)cy + (double)vradius / 2);
+            lib.Scale((double)hradius / 2, (double)vradius / 2);
+            lib.NewPath();
+            lib.Arc(0, 0, 1, 0, 2 * Math.PI);
+            lib.Matrix = matrix;
+            lib.Fill();
+            lib.Stroke();
+            lib.Restore();
+        }
+
+        public override void setHighlight(int size, System.Drawing.Color clolor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void setFillColor(int size, System.Drawing.Color clolor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

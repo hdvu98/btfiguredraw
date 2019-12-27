@@ -21,7 +21,7 @@ namespace FigureDraw.Diagram
         }
         public void add(DiagramFactory factory)
         {
-            ConditionBlock a=  factory.createConditionBlock(Info);
+            EndBlock a=  factory.createEndBlock(Info);
             blocks.Add(a);
         }
 

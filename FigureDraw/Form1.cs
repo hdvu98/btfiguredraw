@@ -1,5 +1,7 @@
 ﻿using FigureDraw.Common;
+using FigureDraw.Diagram.ActivityDiagram;
 using FigureDraw.Diagram.FlowChart;
+using FigureDraw.Effects;
 using FigureDraw.Graphics;
 using FigureDraw.Shapes;
 using System;
@@ -67,20 +69,32 @@ namespace FigureDraw
             //};
             //ellipseDemo3.draw(new CairoGraphic(gCairo));
 
-            Diagram.DiagramFactory factory = new FCFactory();
-            ShapeInfo info = new ShapeInfo();
-            info.point1 = new Point(10, 10);
-            info.width = 10;
-            info.height = 20;
-            Diagram.Diagram dia = new Diagram.Diagram();
-            dia.Info = new ShapeInfo
+            //Diagram.DiagramFactory factory = new ADFactory();
+            //ShapeInfo info = new ShapeInfo();
+            //info.point1 = new Point(10, 10);
+            //info.width = 10;
+            //info.height = 20;
+            //Diagram.Diagram dia = new Diagram.Diagram();
+            //dia.Info = new ShapeInfo
+            //{
+            //    point1 = new Point(10, 10),
+            //    width = 100,
+            //    height = 50
+            //};
+            //dia.add(factory);
+            //dia.draw(new CairoGraphic(gCairo));
+
+            Shape ellipseDemo3 = new Shapes.Ellipse();
+            ellipseDemo3.Info = new ShapeInfo
             {
-                point1 = new Point(10, 10),
-                width = 100,
-                height = 50
+                point1 = new Point(10, 90),
+                width = 50,
+                height = 20
             };
-            dia.add(factory);
-            dia.draw(new CairoGraphic(gCairo));
+            EffectedShape effShapeelipse = new ShadowShape();
+            effShapeelipse.shape = ellipseDemo3;
+            effShapeelipse.draw(new CairoGraphic(gCairo));
+
         }
     }
 }

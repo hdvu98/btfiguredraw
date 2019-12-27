@@ -17,6 +17,8 @@ namespace FigureDraw.Graphics
         public abstract void drawRectangle(int x1, int y1, int width, int height);
         public abstract void drawEllipse(int cx, int cy, int hradius, int vradius);
         public abstract void drawText(string content, Brush brush, Point position, Font font);
-
+        public abstract void drawFillEllipse(int cx, int cy, int hradius, int vradius);
+        public abstract void setHighlight(int size, Color clolor);
+        public abstract void setFillColor(int size, Color clolor);
     }
 }

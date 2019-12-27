@@ -51,6 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ShapeInfo.cs" />
+    <Compile Include="Diagram\ActivityDiagram\ADConditionBlock.cs" />
+    <Compile Include="Diagram\ActivityDiagram\ADEndBlock.cs" />
+    <Compile Include="Diagram\ActivityDiagram\ADFactory.cs" />
+    <Compile Include="Diagram\ActivityDiagram\ADHandleBlock.cs" />
+    <Compile Include="Diagram\ActivityDiagram\ADInputBlock.cs" />
+    <Compile Include="Diagram\ActivityDiagram\ADOutputBlock.cs" />
+    <Compile Include="Diagram\ActivityDiagram\ADStartBlock.cs" />
+    <Compile Include="Diagram\ActivityDiagram\ADStepBlock.cs" />
     <Compile Include="Diagram\Block.cs" />
     <Compile Include="Diagram\ConditionBlock.cs" />
     <Compile Include="Diagram\Diagram.cs" />
@@ -69,6 +77,9 @@
     <Compile Include="Diagram\OutputBlock.cs" />
     <Compile Include="Diagram\StartBlock.cs" />
     <Compile Include="Diagram\StepBlock.cs" />
+    <Compile Include="Effects\EffectedShape.cs" />
+    <Compile Include="Effects\HighlightShape.cs" />
+    <Compile Include="Effects\ShadowShape.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,10 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Diagram\ActivityDiagram\" />
-    <Folder Include="Diagram\DataFlow\" />
-    <Folder Include="Effects\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
