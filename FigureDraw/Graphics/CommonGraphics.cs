@@ -19,6 +19,8 @@ namespace FigureDraw.Graphics
         public abstract void drawText(string content, Brush brush, Point position, Font font);
         public abstract void drawFillEllipse(int cx, int cy, int hradius, int vradius);
         public abstract void setHighlight(int size, Color clolor);
-        public abstract void setFillColor(int size, Color clolor);
+        public abstract void setFillColor(Color clolor);
+        public abstract void setPathColor(int size, Color clolor);
+
     }
 }

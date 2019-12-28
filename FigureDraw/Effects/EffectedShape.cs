@@ -13,8 +13,10 @@ namespace FigureDraw.Effects
         public Shape shape;
         public override void draw(CommonGraphics graphic)
         {
-            shape.draw(graphic);
             format(graphic, shape);
+            graphic.setPathColor(5, System.Drawing.Color.Blue);
+            shape.draw(graphic);
+
         }
         protected abstract void format(CommonGraphics g, Shape shape);
     }

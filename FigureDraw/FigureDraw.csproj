@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DiagramType.cs" />
     <Compile Include="Common\ShapeInfo.cs" />
     <Compile Include="Diagram\ActivityDiagram\ADConditionBlock.cs" />
     <Compile Include="Diagram\ActivityDiagram\ADEndBlock.cs" />
@@ -91,7 +92,7 @@
     <Compile Include="Graphics\GDIPlusGraphic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Save\CairoGraphicJpegcs.cs" />
+    <Compile Include="Save\CairoGraphicJpeg.cs" />
     <Compile Include="Save\CairoGraphicSvg.cs" />
     <Compile Include="Save\GDIPlusGraphicJpeg.cs" />
     <Compile Include="Shapes\Ellipse.cs" />

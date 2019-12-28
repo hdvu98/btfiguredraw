@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,14 @@ namespace FigureDraw.Effects
     {
         protected override void format(CommonGraphics g, Shape shape)
         {
-            g.drawFillEllipse(shape.Info.point1.X, shape.Info.point1.Y, shape.Info.width, shape.Info.height);
-            shape.Info.point1.X += 5;
-            shape.Info.point1.Y += 5;
+    
+            g.setPathColor(5,Color.Black);
+            int temp = (shape.Info.width + shape.Info.width) / 12;
+            shape.Info.point1.X += 2;
+            shape.Info.point1.Y += 2;
             shape.draw(g);
+            shape.Info.point1.X -= 2;
+            shape.Info.point1.Y -= 2;
         }
     }
 }

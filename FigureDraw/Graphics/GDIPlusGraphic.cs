@@ -9,7 +9,7 @@ namespace FigureDraw.Graphics
 {
     public class GDIPlusGraphic : CommonGraphics
     {
-        static private Pen pen = new Pen(Color.Black, 5);
+        static private Pen pen = new Pen(Color.Black, 2);
         private System.Drawing.Graphics lib;
 
         public GDIPlusGraphic(System.Drawing.Graphics lib, Color lineColor, Color fillColor,int lineWidth,bool isFill)
@@ -58,9 +58,15 @@ namespace FigureDraw.Graphics
             throw new NotImplementedException();
         }
 
-        public override void setFillColor(int size, Color clolor)
+        public override void setFillColor(Color clolor)
         {
             throw new NotImplementedException();
+        }
+
+        public override void setPathColor(int size, Color clolor)
+        {
+            pen.Width = size;
+            pen.Color = clolor;
         }
     }
 }

@@ -10,8 +10,8 @@ namespace FigureDraw.Graphics
 {
     public class CairoGraphic : CommonGraphics
     {
-        private Context lib;
-        private Surface surface;
+        protected Context lib;
+        protected Surface surface;
 
         public CairoGraphic(System.Drawing.Graphics g, System.Drawing.Color lineColor, System.Drawing.Color fillColor, int lineWidth, bool isFill)
         {
@@ -90,9 +90,15 @@ namespace FigureDraw.Graphics
             throw new NotImplementedException();
         }
 
-        public override void setFillColor(int size, System.Drawing.Color clolor)
+        public override void setFillColor(System.Drawing.Color clolor)
         {
             throw new NotImplementedException();
+        }
+
+        public override void setPathColor(int size, System.Drawing.Color clolor)
+        {
+            lib.LineWidth = size;
+            lib.SetSourceRGB(clolor.R, clolor.G, clolor.B);
         }
     }
 }
