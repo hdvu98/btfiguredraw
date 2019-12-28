@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DiagramType.cs" />
+    <Compile Include="Common\GraphicType.cs" />
     <Compile Include="Common\ShapeInfo.cs" />
+    <Compile Include="Common\ShapeType.cs" />
     <Compile Include="Diagram\ActivityDiagram\ADConditionBlock.cs" />
     <Compile Include="Diagram\ActivityDiagram\ADEndBlock.cs" />
     <Compile Include="Diagram\ActivityDiagram\ADFactory.cs" />

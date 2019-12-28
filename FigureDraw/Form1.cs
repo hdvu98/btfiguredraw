@@ -25,6 +25,9 @@ namespace FigureDraw
         CommonGraphics cairo = null;
         Shape shape = null;
         List<Shape> shapes = new List<Shape>();
+        public ShapeType shapeType;
+        public GraphicType graphicType;
+        public Effect effectType;
 
         public Form1()
         {
@@ -208,6 +211,51 @@ namespace FigureDraw
             EffectedShape regShadow = new ShadowShape();
             regShadow.shape = reg;
             regShadow.draw(g1);
+
+        }
+
+        private void rdbHightlight_CheckedChanged(object sender, EventArgs e)
+        {
+           effectType = Effect.Highlight;
+        }
+
+        private void rdbShadow_CheckedChanged(object sender, EventArgs e)
+        {
+            effectType = Effect.Shadow;
+        }
+
+        private void radioDefault_CheckedChanged(object sender, EventArgs e)
+        {
+            effectType = Effect.Default;
+        }
+
+        private void rdbEllipse_CheckedChanged(object sender, EventArgs e)
+        {
+            shapeType = ShapeType.Elipse;
+        }
+
+        private void rdbRectangle_CheckedChanged(object sender, EventArgs e)
+        {
+            shapeType = ShapeType.Rectangle;
+        }
+
+        private void rdbLine_CheckedChanged(object sender, EventArgs e)
+        {
+            shapeType = ShapeType.Line;
+        }
+
+        private void rdbGDI_CheckedChanged(object sender, EventArgs e)
+        {
+            graphicType = GraphicType.GDI;
+        }
+
+        private void rdbCairo_CheckedChanged(object sender, EventArgs e)
+        {
+            graphicType = GraphicType.Cairo;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

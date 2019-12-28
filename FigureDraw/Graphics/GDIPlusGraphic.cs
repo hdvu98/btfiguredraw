@@ -50,7 +50,7 @@ namespace FigureDraw.Graphics
         {
             lib.DrawEllipse(pen, cx, cy, hradius, vradius);
             SolidBrush solidBrush = new SolidBrush(Color.Black);
-            lib.FillEllipse(solidBrush, 0, 0, 100, 60);
+            lib.FillEllipse(solidBrush, cx, cy, hradius, vradius);
         }
 
         public override void setHighlight(int size, Color clolor)

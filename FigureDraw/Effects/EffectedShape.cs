@@ -14,7 +14,7 @@ namespace FigureDraw.Effects
         public override void draw(CommonGraphics graphic)
         {
             format(graphic, shape);
-            graphic.setPathColor(5, System.Drawing.Color.Blue);
+            graphic.setPathColor(2, System.Drawing.Color.Blue);
             shape.draw(graphic);
 
         }
