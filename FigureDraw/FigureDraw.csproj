@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="Mono.Cairo, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Mono.Cairo.dll\Mono.Cairo.dll</HintPath>
+      <HintPath>.\Mono.Cairo.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

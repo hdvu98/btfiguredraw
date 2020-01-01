@@ -25,20 +25,41 @@ namespace FigureDraw
         CommonGraphics cairo = null;
         Shape shape = null;
         List<Shape> shapes = new List<Shape>();
+
+        CommonGraphics gDraw;
+        System.Drawing.Graphics gDrawPanelGDI = null;
+        System.Drawing.Graphics gDrawPanelCairo = null;
+        CommonGraphics gdiPlusDraw = null;
+        CommonGraphics cairoDraw = null;
         public ShapeType shapeType;
         public GraphicType graphicType;
         public Effect effectType;
+        Boolean isMouseDown = false;
+        System.Drawing.Point p1, p2;
 
         public Form1()
         {
             InitializeComponent();
+            gDrawPanelGDI = panel1.CreateGraphics();
+            gDrawPanelCairo = panel1.CreateGraphics();
+            gdiPlusDraw = new GDIPlusGraphic(gDrawPanelGDI);
+            cairoDraw = new CairoGraphic(gDrawPanelCairo);
+            gDraw = gdiPlusDraw;
+            shapeType = ShapeType.Line;
+            effectType = Effect.Default;
         }
 
         private void drawArea_Paint(object sender, PaintEventArgs e)
         {
             gGDI = drawArea.CreateGraphics();
             gCairo = drawArea.CreateGraphics();
-            CommonGraphics g1 = new GDIPlusGraphic(gGDI);
+            CommonGraphics g1;
+            if (rdbGDI.Checked) { 
+                g1 = new GDIPlusGraphic(gGDI);
+            }
+            else {
+                g1 = new CairoGraphic(gCairo);
+            }
 
 
             //Activity Diagram
@@ -109,7 +130,7 @@ namespace FigureDraw
             Diagram.Diagram fc = new Diagram.Diagram();
             fc.Info = new ShapeInfo
             {
-                point1 = new Point(250, 10),
+                point1 = new Point(250, 5),
                 width = 50,
                 height = 20
             };
@@ -247,16 +268,136 @@ namespace FigureDraw
         private void rdbGDI_CheckedChanged(object sender, EventArgs e)
         {
             graphicType = GraphicType.GDI;
+            gDraw = gdiPlusDraw;
+            label1.Text = "GDI+ Graphics";
+            drawArea.Invalidate();
+            drawArea.Update();
+            drawArea.Refresh();
+
+
+            panel1.Invalidate();
+            panel1.Update();
+            panel1.Refresh();
         }
 
         private void rdbCairo_CheckedChanged(object sender, EventArgs e)
         {
+            label1.Text = "Cairo Graphics";
+            gDraw = null;
+            gDraw = new CairoGraphic(panel1.CreateGraphics());
+
             graphicType = GraphicType.Cairo;
+            drawArea.Invalidate();
+            drawArea.Update();
+            drawArea.Refresh();
+
+            panel1.Invalidate();
+            panel1.Update();
+            panel1.Refresh();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                isMouseDown = true;
+                p1 = new System.Drawing.Point(e.X, e.Y);
+            }
         }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (isMouseDown && e.Button == MouseButtons.Left)
+            {
+                p2 = new System.Drawing.Point(e.X, e.Y);
+                switch (shapeType)
+                {
+                    case ShapeType.Line:
+                        {
+                          
+                            Shape line = new Shapes.Line();
+                            line.Info = new ShapeInfo
+                            {
+                                point1 = p1,
+                                point2 = p2,
+                                color = System.Drawing.Color.Black,
+                            };
+                            if (effectType == Effect.Shadow)
+                            {
+                                EffectedShape eff = new ShadowShape();
+                                eff.shape = line;
+                                eff.draw(gDraw);
+                            }
+                            else if (effectType == Effect.Highlight)
+                            {
+                                EffectedShape eff = new HighlightShape();
+                                eff.shape = line;
+                                eff.draw(gDraw);
+                            }
+                            else
+                            {
+                                line.draw(gDraw);
+                            }
+                            break;
+                        }
+
+                    case ShapeType.Rectangle:
+                        Shape rect = new Shapes.Rectangle();
+                        rect.Info = new ShapeInfo
+                        {
+                            point1 = p1,
+                            width = Math.Abs(p1.X - p2.X),
+                            height = Math.Abs(p1.Y - p2.Y),
+                            color = Color.Black,
+                        };
+                        if (effectType == Effect.Shadow)
+                        {
+                            EffectedShape eff = new ShadowShape();
+                            eff.shape = rect;
+                            eff.draw(gDraw);
+                        }
+                        else if (effectType == Effect.Highlight)
+                        {
+                            EffectedShape eff = new HighlightShape();
+                            eff.shape = rect;
+                            eff.draw(gDraw);
+                        }
+                        else
+                        {
+                            rect.draw(gDraw);
+                        }
+                        break;
+
+                    case ShapeType.Elipse:
+                        Shape ellipse = new Ellipse();
+                        ellipse.Info = new ShapeInfo
+                        {
+                            point1 = p1,
+                            width = Math.Abs(p1.X - p2.X),
+                            height = Math.Abs(p1.Y - p2.Y),
+                        };
+                        if (effectType == Effect.Shadow)
+                        {
+                            EffectedShape eff = new ShadowShape();
+                            eff.shape = ellipse;
+                            eff.draw(gDraw);
+                        }
+                        else if (effectType == Effect.Highlight)
+                        {
+                            EffectedShape eff = new HighlightShape();
+                            eff.shape = ellipse;
+                            eff.draw(gDraw);
+                        }
+                        else
+                        {
+                            ellipse.draw(gDraw);
+                        }
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            }
     }
 }

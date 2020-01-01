@@ -20,6 +20,8 @@ namespace FigureDraw.Effects
             //shape.Info.height += 5;
             //shape.Info.width += 5;
             shape.draw(g);
+            g.setPathColor(10, System.Drawing.Color.Black);
+
         }
     }
 

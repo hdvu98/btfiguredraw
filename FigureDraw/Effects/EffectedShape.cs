@@ -16,6 +16,8 @@ namespace FigureDraw.Effects
             format(graphic, shape);
             graphic.setPathColor(2, System.Drawing.Color.Blue);
             shape.draw(graphic);
+            graphic.setPathColor(2, System.Drawing.Color.Black);
+
 
         }
         protected abstract void format(CommonGraphics g, Shape shape);

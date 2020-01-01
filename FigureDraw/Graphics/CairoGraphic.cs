@@ -64,9 +64,9 @@ namespace FigureDraw.Graphics
         public override void drawText(string content, Brush brush, System.Drawing.Point position, Font font)
         {
             lib.Save();
-            lib.MoveTo(position.X, position.Y);
+            lib.MoveTo(position.X, position.Y+10);
             lib.SelectFontFace("ariel", FontSlant.Normal, FontWeight.Normal);
-            lib.SetFontSize(13);
+            lib.SetFontSize(font.Size+3);
             lib.ShowText(content);
             lib.Restore();
         }
